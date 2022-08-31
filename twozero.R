@@ -6,7 +6,7 @@ linethickness <- 2
 library(tidyverse)
 library("data.table")
 
-tldata <- fread("C:\\Users\\Nico\\Desktop\\INET PRJ\\B1_Standard-Datensatzpaket\\CSV\\MiD2017_Wege.csv",
+tldata <- fread("C:\\Users\\Nico\\Desktop\\INET PRJ\\B1_Standard-Datensatzpaket\\CSV\\MiD2017_Wege.csv", #path must be changed!
                                         sep = ";",
                                         dec = ",",
                                         select = c("wegkm",
@@ -14,7 +14,7 @@ tldata <- fread("C:\\Users\\Nico\\Desktop\\INET PRJ\\B1_Standard-Datensatzpaket\
                                                    "hvm_diff2"))
 tldata <- tldata[!(tldata$`wegkm`=="9994" |
                      tldata$`wegkm`=="9999" |
-                     tldata$`wegkm`=="70703")] # exclude unwanted lines with unknown distancevalue
+                     tldata$`wegkm`=="70703")] # exclude unwanted lines with "unknown" distancevalue et al
 
 tl_walk = tldata$`wegkm`[tldata$`hvm` == 1] # Walk
 tl_bike = tldata$`wegkm`[tldata$`hvm` == 2] # Bicycle (incl. Ebike)
@@ -83,3 +83,12 @@ legend('bottomleft', #definition der legende
        title = "Mode", #legendentitel
        title.adj = 0.1,         # Horizontal adjustment of the title
        title.cex = 1.5)
+
+#------------- linear trip distribution through mode of transportation -table
+
+#install.packages(dplyr)
+#library(dplyr)
+#zusammenfassung <- tldata[tldata$`hvm` == 4] %>% 
+#  group_by(hvm_diff2) %>% 
+#  summarise(totalcount = n(),above100km = sum(wegkm > 100), percent = above100km/totalcount)
+#zusammenfassung
