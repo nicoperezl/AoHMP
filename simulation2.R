@@ -4,7 +4,6 @@
 # Settings
 linethickness <- 2
 line1 = 99 # händischer vergleich linenummer
-targetvec <- tl_autodriver #vector mit triplängen der nachgebildet werden soll
 samplezahl = 400 # anzahl trips die für jede paramterkombination generiert werden soll. hoher einfluss auf rechendauer!
 targetvec <- tl_autodriver # vector auf den gematcht werden soll
 messpt <- c(1, 3, 5.5, 10, 30, 55, 100, 300) # triplängen an denen die differenz zwischen targetvec und modell output ermittelt und aufsummiert wird
